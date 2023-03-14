@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+// One advantage useRef has over useState could be well stated as “the reference does not trigger a re-render,
+// but in state, when state is updated it triggers a re-render.
+
+import { CountRenders } from './pages/CountRenders';
+import { CountRendersWithRef } from './pages/CountRendersWithRef';
+import { StopWatchTimer } from './pages/StopWatchTimer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h4>app</h4>
+      {/* <CountRenders /> */}
+      <CountRendersWithRef />
+      <hr />
+      <StopWatchTimer />
     </div>
   );
 }
