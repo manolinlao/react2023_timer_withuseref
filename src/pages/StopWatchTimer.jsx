@@ -5,10 +5,11 @@ export const StopWatchTimer = () => {
   const [secs, setSecs] = useState(0);
   const numberOfRenders = useRef(0);
   const time = useRef(null);
+  console.log('RENDER');
 
   const handleOnchange = (e) => {
     setInsert(e.target.value);
-    //numberOfRenders.current++;
+    numberOfRenders.current++;
   };
 
   const startTime = () => {
@@ -23,7 +24,6 @@ export const StopWatchTimer = () => {
   const stopTime = () => {
     clearInterval(time.current);
     time.current = null;
-    //time.current = 0;
   };
 
   const resetTime = () => {
