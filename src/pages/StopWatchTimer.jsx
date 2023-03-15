@@ -3,30 +3,33 @@ import { useRef, useState } from 'react';
 export const StopWatchTimer = () => {
   const [insert, setInsert] = useState('');
   const [secs, setSecs] = useState(0);
-  const reference = useRef(0);
-  const time = useRef();
+  const numberOfRenders = useRef(0);
+  const time = useRef(null);
 
   const handleOnchange = (e) => {
     setInsert(e.target.value);
-    reference.current++;
+    //numberOfRenders.current++;
   };
 
   const startTime = () => {
-    time.current = setInterval(() => {
-      reference.current++;
-      setSecs((prev) => prev + 1);
-    }, 1000);
+    if (time.current === null) {
+      time.current = setInterval(() => {
+        numberOfRenders.current++;
+        setSecs((prev) => prev + 1);
+      }, 1000);
+    }
   };
 
   const stopTime = () => {
     clearInterval(time.current);
-    time.current = 0;
+    time.current = null;
+    //time.current = 0;
   };
 
   const resetTime = () => {
     stopTime();
     if (secs) {
-      reference.current++;
+      numberOfRenders.current++;
       setSecs(0);
     }
   };
@@ -51,7 +54,7 @@ export const StopWatchTimer = () => {
       <input type='button' value='reset time' onClick={resetTime} />
       <p>Timer{secs}</p>
       <div>
-        <p>Render:[{reference.current}]</p>
+        <p>Render:[{numberOfRenders.current}]</p>
       </div>
     </div>
   );
